@@ -1,0 +1,37 @@
+
+void setup()
+{
+   // initialise serial communication at 9600 bps
+   Serial.begin(9600);                                   
+    
+    pinMode(13,OUTPUT);
+   
+    pinMode(A0,INPUT);
+}
+
+
+void Loop()
+{
+   // read the sensor
+   sensorValue = analogRead(soil_sensor);
+   
+   // print the sensor results to the serial monitor
+   Serial.print("Moisture Value = ");
+   Serial.println(sensorValue);
+   
+   if(sensorValue < 320) 
+   {
+       // Threshold set to 320 
+      digitalWrite(13,LOW);
+   }
+   
+   if(sensorValue >= 320) 
+   {
+      digitalWrite(13,HIGH);
+   }
+   
+   //delay of one second
+   delay(1000);
+   
+ }
+   
